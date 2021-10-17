@@ -18,6 +18,9 @@ const Home = ()=>{
   return (
     <HomeBlock>
       <Typewriter 
+        options={{
+          loop: true,
+        }}
         onInit={(typewriter)=>{
           typewriter
           .typeString("안녕하세요!")
@@ -26,7 +29,8 @@ const Home = ()=>{
           .typeString("KRyun 포트폴리오에 오신걸 환영합니다!!")
           .start();
         }}
-      />      
+      />
+      
     </HomeBlock>
   )
 };
