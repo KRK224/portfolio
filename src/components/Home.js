@@ -23,10 +23,11 @@ const Home = ()=>{
         }}
         onInit={(typewriter)=>{
           typewriter
-          .typeString("안녕하세요!")
+          .typeString("<strong>안녕하세요!</strong>")
           .pauseFor(2000)
           .deleteAll()
-          .typeString("KRyun 포트폴리오에 오신걸 환영합니다!!")
+          .typeString("KRyun 포트폴리오에 <br />오신걸 환영합니다!!")
+          .pauseFor(2000)
           .start();
         }}
       />
