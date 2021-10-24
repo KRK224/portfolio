@@ -1,4 +1,5 @@
 import React from 'react';
+import Fade from 'react-reveal/Fade';
 import Responsive from './components/common/Responsive';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -10,7 +11,9 @@ const App = ()=>{
     <Header />
     <Responsive>
       <Home />
-      <SkillSet />
+      <Fade bottom>
+        <SkillSet id="skillSet"/>
+      </Fade>
     </Responsive>
     </>
   )

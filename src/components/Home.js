@@ -26,7 +26,7 @@ const Home = ()=>{
           .typeString("<strong>안녕하세요!</strong>")
           .pauseFor(2000)
           .deleteAll()
-          .typeString("KRyun 포트폴리오에 <br />오신걸 환영합니다!!")
+          .typeString("<strong>KRyun 포트폴리오에</strong><br /><strong>오신걸 환영합니다!!</strong>")
           .pauseFor(2000)
           .start();
         }}

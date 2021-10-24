@@ -8,7 +8,7 @@ const SkillBarBlock = styled.div`
   }
 
   .info span{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
     opacity: 0;
     animation: showText 0.5s 1s linear forwards;

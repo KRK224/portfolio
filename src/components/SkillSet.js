@@ -4,12 +4,13 @@ import SkillBar from './SkillBar';
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 const SkillSetBlock = styled.div`
-  padding: 2rem;
+  padding: 2rem 10rem;
   height: 100vh;
   width: 100%;
+  margin: 0 auto;
 
   .header {
-    margin: 3rem 1rem 7rem;
+    margin: 3rem 1rem 8rem;
     font-size: 2rem;
     font-weight: 600;
     display: flex;
@@ -136,16 +137,17 @@ const SkillSetBlock = styled.div`
     & > div {
       align-self: flex-start;
       position:relative;
-      border: 3px solid black;
+      /* border: 3px solid black; */
       border-top: none;
       border-radius: 1.5rem;
+      margin: 2rem 0;
       padding: 2rem 0;
       padding-right: 2rem;
       & > span {
         position: absolute;
         top: -2rem;
         display: block;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 500;
         padding-left: 3rem;
         padding-bottom: 2rem;
@@ -184,18 +186,18 @@ const SkillSet = ()=>{
     </div>
     <div className="container">
       <div className="frontEnd">
-        <span>Front End</span>
+        <span>#Front End</span>
         <SkillBar skillName="HTML/CSS" percent="75%"/>
         <SkillBar skillName="React/Redux" percent="50%"/>
         <SkillBar skillName="Redux-Saga" percent="25%" />
       </div>
       <div className="backEnd">
-        <span>Back End</span>
+        <span>#Back End</span>
         <SkillBar skillName="Node.js/Koa" percent="25%"/>
         <SkillBar skillName="MongoDB" percent="25%"/>
       </div>
       <div className="language">
-        <span>Language</span> 
+        <span>#Language</span> 
         <SkillBar skillName="JavaScript" percent="75%"/>
         <SkillBar skillName="Python" percent="50%"/>
       </div>
