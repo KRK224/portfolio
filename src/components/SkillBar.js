@@ -1,6 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
+import styled, {css, keyframes} from 'styled-components';
 import PropTypes from 'prop-types';
+
+const showText = keyframes`
+  100%{
+      opacity: 1;
+    }
+`;
+
 
 const SkillBarBlock = styled.div`
   .info {
@@ -29,13 +36,11 @@ const SkillBarBlock = styled.div`
     transform: scaleX(0);
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.05),
                       0px 1px rgba(255,255,255,0.8);
-    animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
-  }
+    animation-name: none;
 
-  @keyframes animate {
-    100% {
-      transform: scaleX(1);
-    }
+    ${props=> props.active && css`
+      animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+    `};
   }
 
   .progressLine span {
@@ -46,7 +51,17 @@ const SkillBarBlock = styled.div`
     border-radius: 10px;
     transform-origin: left;
     transform: scaleX(0);
-    animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+    
+    animation-name: none;
+    ${props=>props.active && css`
+      animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+    `};
+  }
+
+  @keyframes animate {
+    100% {
+      transform: scaleX(1);
+    }
   }
 
   .progressLine span::before {
@@ -61,7 +76,12 @@ const SkillBarBlock = styled.div`
     border-right-width: 0px;
     border-top-color: #000;
     opacity: 0;
-    animation: showText2 0.5s 1.5s linear forwards;
+    
+    animation-name: none;
+    ${props=>props.acitve && css`
+      animation: showText2 0.5s 1.5s linear forwards;
+    `
+    };
   }
 
   .progressLine span::after {
@@ -76,7 +96,12 @@ const SkillBarBlock = styled.div`
     padding: 1px 8px;
     border-radius: 3px;
     opacity: 0;
-    animation: showText2 0.5s 1.5s linear forwards;
+    animation: none;
+
+    ${props=>props.active &&css`
+      animation: showText2 0.5s 1.5s linear forwards;
+    `};
+
   }
 
   @keyframes showText2 {
@@ -87,7 +112,13 @@ const SkillBarBlock = styled.div`
   }
 `;
 
-const SkillBar = ({skillName, percent})=>{
+const SkillBar = ({skillName, percent, active})=>{
+  useEffect(()=>{
+    console.log('SkillBar rerendering');
+    console.log(active);
+  },
+  [active]);
+
   return(
     <SkillBarBlock percent={percent} skillName={skillName}>
       <div className="info">

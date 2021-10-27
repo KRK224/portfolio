@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeaderBlock = styled.div`
+  position: sticky;
+  top: 0;
   padding: 1rem 6rem;
   display: flex;
   justify-content: space-between;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SkillBar from './SkillBar';
 import { AiOutlineQuestionCircle } from "react-icons/ai";
@@ -10,7 +10,7 @@ const SkillSetBlock = styled.div`
   margin: 0 auto;
 
   .header {
-    margin: 3rem 1rem 8rem;
+    margin: 3.8rem 1rem 8rem;
     font-size: 2rem;
     font-weight: 600;
     display: flex;
@@ -149,14 +149,33 @@ const SkillSetBlock = styled.div`
         display: block;
         font-size: 1.5rem;
         font-weight: 500;
-        padding-left: 3rem;
+        padding-left: 2rem;
         padding-bottom: 2rem;
       }
     }
   };
 `;
 
-const SkillSet = ()=>{
+
+const SkillSet = ({currentPage})=>{
+  
+  const [active, setActive] = useState(false);
+
+  useEffect(()=>{
+    console.log('page가 SKill Set으로 왔습니다.')
+    console.log('currentPage tracking in Skill Set');
+    console.log(currentPage);
+    if(currentPage === 1) {
+      setActive(true);
+      console.log('현재 Skill Set은 Active 상태 입니다.');
+    }
+    else {
+      setActive(false);
+      console.log('현재 Skill Set은 inActive 상태입니다.');
+    }
+  },
+  [currentPage]);
+
   return(
   <SkillSetBlock>
     <div className="header">
@@ -187,19 +206,19 @@ const SkillSet = ()=>{
     <div className="container">
       <div className="frontEnd">
         <span>#Front End</span>
-        <SkillBar skillName="HTML/CSS" percent="75%"/>
-        <SkillBar skillName="React/Redux" percent="50%"/>
-        <SkillBar skillName="Redux-Saga" percent="25%" />
+        <SkillBar skillName="HTML/CSS" percent="75%" active={active}/>
+        <SkillBar skillName="React/Redux" percent="50%" active={active}/>
+        <SkillBar skillName="Redux-Saga" percent="25%" active={active}/>
       </div>
       <div className="backEnd">
         <span>#Back End</span>
-        <SkillBar skillName="Node.js/Koa" percent="25%"/>
-        <SkillBar skillName="MongoDB" percent="25%"/>
+        <SkillBar skillName="Node.js/Koa" percent="25%" active={active}/>
+        <SkillBar skillName="MongoDB" percent="25%" active={active}/>
       </div>
       <div className="language">
         <span>#Language</span> 
-        <SkillBar skillName="JavaScript" percent="75%"/>
-        <SkillBar skillName="Python" percent="50%"/>
+        <SkillBar skillName="JavaScript" percent="75%" active={active}/>
+        <SkillBar skillName="Python" percent="50%" active={active}/>
       </div>
     </div>
   </SkillSetBlock>
