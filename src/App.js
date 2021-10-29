@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import Responsive from './components/common/Responsive';
 import Header from './components/Header';
@@ -9,21 +9,63 @@ import ReactPageScroller from 'react-page-scroller';
 const App = ()=>{
 
   const [currentPage, setCurrentPage] = useState(0);
+  const [actives, setActives] = useState({
+    home: true,
+    skillSet: false,
+    projects: false,
+    contact: false,
+  });
   // 현재 scroll y 위치 저장 후, page 변경 시 header 모양 변경 코드 짜기.
 
   const handlePageChange = number =>{
-    setCurrentPage(number);
     console.log('현재 페이지 번호:');
     console.log(currentPage);
     // scroll y 위치 set 코드 추가하기
   }
 
   const handleBeforePageChange = (number) =>{
-    console.log('예전 page number: ');
-    console.log(number);
+    setCurrentPage(number);
   }
 
+  useEffect(()=>{
+    switch(currentPage){
+      case 0:
+        setActives({
+          home: true,
+          skillSet: false,
+          projects: false,
+          contact: false,
+        })
+        break;
 
+      case 1:
+        setActives({
+          home: false,
+          skillSet: true,
+          projects: false,
+          contact: false,
+        })
+        break;
+      case 2:
+        setActives({
+          home: false,
+          skillSet: false,
+          projects: true,
+          contact: false,
+        })
+        break;
+      case 3:
+        setActives({
+          home: false,
+          skillSet: false,
+          projects: false,
+          contact: true,
+        })
+        break;
+      default:
+        break;
+    }
+  }, [currentPage]);
 
   return(
     <>
@@ -34,9 +76,9 @@ const App = ()=>{
         onBeforePageScroll={handleBeforePageChange}
         customPageNumber={currentPage}
       >
-        <Home currentPage={currentPage} />
-        <Fade bottom>
-          <SkillSet currentPage={currentPage}/>
+        <Home />
+        <Fade bottom when={actives.skillSet} collapse mountOnEnter>
+          <SkillSet active={actives.skillSet}/>
         </Fade>
       </ReactPageScroller>
     </Responsive>

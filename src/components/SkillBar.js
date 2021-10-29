@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react';
-import styled, {css, keyframes} from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
-const showText = keyframes`
-  100%{
-      opacity: 1;
-    }
-`;
 
 
 const SkillBarBlock = styled.div`
   .info {
     padding-bottom: 1.5rem;
+    
+    .inactive {
+      animation: none;
+    }
   }
 
-  .info span{
+  .info .skillName {
     font-size: 1.3rem;
     font-weight: 500;
     opacity: 0;
     animation: showText 0.5s 1s linear forwards;
   }
+
 
   @keyframes showText {
     100%{
@@ -36,14 +35,15 @@ const SkillBarBlock = styled.div`
     transform: scaleX(0);
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.05),
                       0px 1px rgba(255,255,255,0.8);
-    animation-name: none;
+    
+    animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
 
-    ${props=> props.active && css`
-      animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
-    `};
+    .inactive {
+      animation: none;
+    }
   }
 
-  .progressLine span {
+  .progressLine .progressLineSpan {
     height: 100%;
     width: ${props=>props.percent || 0};
     background: #6665ee;
@@ -51,11 +51,11 @@ const SkillBarBlock = styled.div`
     border-radius: 10px;
     transform-origin: left;
     transform: scaleX(0);
-    
-    animation-name: none;
-    ${props=>props.active && css`
-      animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
-    `};
+    animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+  }
+
+  .inactive {
+      animation: none;
   }
 
   @keyframes animate {
@@ -64,7 +64,7 @@ const SkillBarBlock = styled.div`
     }
   }
 
-  .progressLine span::before {
+  .progressLine .ProgressLineSpan::before {
     position: absolute;
     content: "";
     right: 0;
@@ -77,14 +77,10 @@ const SkillBarBlock = styled.div`
     border-top-color: #000;
     opacity: 0;
     
-    animation-name: none;
-    ${props=>props.acitve && css`
-      animation: showText2 0.5s 1.5s linear forwards;
-    `
-    };
+    animation: showText2 0.5s 1.5s linear forwards;
   }
 
-  .progressLine span::after {
+  .progressLine .progressLineSpan::after {
     position: absolute;
     content: "${props=> props.percent}";
     right: 0;
@@ -96,12 +92,8 @@ const SkillBarBlock = styled.div`
     padding: 1px 8px;
     border-radius: 3px;
     opacity: 0;
-    animation: none;
-
-    ${props=>props.active &&css`
-      animation: showText2 0.5s 1.5s linear forwards;
-    `};
-
+    
+    animation: showText2 0.5s 1.5s linear forwards;
   }
 
   @keyframes showText2 {
@@ -114,18 +106,16 @@ const SkillBarBlock = styled.div`
 
 const SkillBar = ({skillName, percent, active})=>{
   useEffect(()=>{
-    console.log('SkillBar rerendering');
-    console.log(active);
   },
   [active]);
 
   return(
-    <SkillBarBlock percent={percent} skillName={skillName}>
+    <SkillBarBlock percent={percent} skillName={skillName} active={active}>
       <div className="info">
-        <span>{skillName}</span>
+        <span className={active? "skillName" : "skillName inactive"}>{skillName}</span>
       </div>
-      <div className="progressLine">
-        <span></span>
+      <div className={active? "progressLine": "progressLine inactive"}>
+        <span className={active? "progressLineSpan": "ProgressLineSpan inactive"}></span>
       </div>
     </SkillBarBlock>
   )

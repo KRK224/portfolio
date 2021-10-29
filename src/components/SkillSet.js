@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import SkillBar from './SkillBar';
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+
 
 const SkillSetBlock = styled.div`
   padding: 2rem 10rem;
@@ -157,24 +158,11 @@ const SkillSetBlock = styled.div`
 `;
 
 
-const SkillSet = ({currentPage})=>{
-  
-  const [active, setActive] = useState(false);
+const SkillSet = ({active})=>{
 
   useEffect(()=>{
-    console.log('page가 SKill Set으로 왔습니다.')
-    console.log('currentPage tracking in Skill Set');
-    console.log(currentPage);
-    if(currentPage === 1) {
-      setActive(true);
-      console.log('현재 Skill Set은 Active 상태 입니다.');
-    }
-    else {
-      setActive(false);
-      console.log('현재 Skill Set은 inActive 상태입니다.');
-    }
   },
-  [currentPage]);
+  [active]);
 
   return(
   <SkillSetBlock>
