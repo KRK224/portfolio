@@ -5,13 +5,13 @@ import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 
 const SkillSetBlock = styled.div`
-  padding: 2rem 10rem;
+  padding: 2rem 8rem;
   height: 100vh;
   width: 100%;
   margin: 0 auto;
 
   .header {
-    margin: 3.8rem 1rem 8rem;
+    margin: 3rem 1rem 8rem;
     font-size: 2rem;
     font-weight: 600;
     display: flex;

@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Home from './components/Home';
 import SkillSet from './components/SkillSet';
 import ReactPageScroller from 'react-page-scroller';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 const App = ()=>{
 
@@ -18,6 +20,7 @@ const App = ()=>{
   // 현재 scroll y 위치 저장 후, page 변경 시 header 모양 변경 코드 짜기.
 
   const handlePageChange = number =>{
+    setCurrentPage(number);
     console.log('현재 페이지 번호:');
     console.log(currentPage);
     // scroll y 위치 set 코드 추가하기
@@ -75,10 +78,17 @@ const App = ()=>{
         pageOnChange={handlePageChange}
         onBeforePageScroll={handleBeforePageChange}
         customPageNumber={currentPage}
+        renderAllPagesOnFirstRender={true}
       >
         <Home />
         <Fade bottom when={actives.skillSet} collapse mountOnEnter>
           <SkillSet active={actives.skillSet}/>
+        </Fade>
+        <Fade bottom when={actives.projects} collapse mountOnEnter>
+          <Projects />
+        </Fade>
+        <Fade bottom when={actives.contact} collapse mountOnEnter>
+          <Contact />
         </Fade>
       </ReactPageScroller>
     </Responsive>

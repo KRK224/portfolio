@@ -14,7 +14,7 @@ const HomeBlock = styled.div`
 `;
 
 
-const Home = ({currentPage})=>{
+const Home = ()=>{
   return (
     <HomeBlock>
       <Typewriter 
