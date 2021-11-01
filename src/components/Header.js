@@ -11,8 +11,9 @@ const HeaderBlock = styled.div`
   padding: 1rem 6rem;
   display: flex;
   justify-content: space-between;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  font-style: italic;
   z-index: 1;
   
   span+span {
@@ -25,7 +26,7 @@ const Header =()=>{
   return(
     <HeaderBlock>
       <div className="title">
-        KRyun
+        KRyun Portfolio
       </div>
       <div className="menu">
         <span>Home</span>

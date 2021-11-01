@@ -21,7 +21,7 @@ const ProjectBlock = styled.div`
     }
   }
 
-  .contents {
+  .projectsContents {
     width: 100%;
     margin: 0 auto;
     margin-left: 2rem;
@@ -51,7 +51,7 @@ const Projects = () =>{
     <div className="header">
       <span className="projectsTitle">Projects</span>
     </div>
-    <div className="contents">
+    <div className="projectsContents">
       <Slider {...settings}>
         <Project 
           imgPath={projectData.imgPath[0]} 
