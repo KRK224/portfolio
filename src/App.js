@@ -72,7 +72,7 @@ const App = ()=>{
 
   return(
     <>
-    <Header />
+    <Header handlePageChange={handlePageChange} setCurrentPage={setCurrentPage}/>
     <Responsive>
       <ReactPageScroller
         pageOnChange={handlePageChange}
@@ -82,7 +82,7 @@ const App = ()=>{
       >
         <Home />
         <Fade bottom when={actives.skillSet} collapse mountOnEnter>
-          <SkillSet active={actives.skillSet}/>
+          <SkillSet active={actives.skillSet} />
         </Fade>
         <Fade bottom when={actives.projects} collapse mountOnEnter>
           <Projects />

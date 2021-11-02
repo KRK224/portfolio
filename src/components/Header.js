@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const HeaderBlock = styled.div`
   position: fixed;
   background-color: white;
@@ -16,23 +17,35 @@ const HeaderBlock = styled.div`
   font-style: italic;
   z-index: 1;
   
-  span+span {
+  button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  button+button {
     margin-left: 2rem;
   }
   
 `;
 
-const Header =()=>{
+const Header =({handlePageChange, setCurrentPage})=>{
+  
+  
   return(
     <HeaderBlock>
       <div className="title">
         KRyun Portfolio
       </div>
       <div className="menu">
-        <span>Home</span>
-        <span>Skill Set</span>
-        <span>Projects</span>
-        <span>Contact</span>
+        <button>Home</button>
+        <button>Skill Set</button>
+        <button>Projects</button>
+        <button>Contact</button>
       </div>
     </HeaderBlock>
   )
