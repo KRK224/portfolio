@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import Responsive from './components/common/Responsive';
 import Header from './components/Header';
@@ -19,16 +19,15 @@ const App = ()=>{
   });
   // 현재 scroll y 위치 저장 후, page 변경 시 header 모양 변경 코드 짜기.
 
-  const handlePageChange = number =>{
+  const handlePageChange =  number =>{
     setCurrentPage(number);
     console.log('현재 페이지 번호:');
     console.log(currentPage);
-    // scroll y 위치 set 코드 추가하기
-  }
+  };
 
   const handleBeforePageChange = (number) =>{
     setCurrentPage(number);
-  }
+  };
 
   useEffect(()=>{
     switch(currentPage){
@@ -72,7 +71,7 @@ const App = ()=>{
 
   return(
     <>
-    <Header handlePageChange={handlePageChange} setCurrentPage={setCurrentPage}/>
+    <Header handleBeforePageChange={handleBeforePageChange}/>
     <Responsive>
       <ReactPageScroller
         pageOnChange={handlePageChange}

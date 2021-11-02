@@ -25,6 +25,7 @@ const HeaderBlock = styled.div`
     font-size: 1.8rem;
     font-weight: bold;
     font-style: italic;
+    cursor: pointer;
   }
 
   button+button {
@@ -33,7 +34,7 @@ const HeaderBlock = styled.div`
   
 `;
 
-const Header =({handlePageChange, setCurrentPage})=>{
+const Header =({handleBeforePageChange})=>{
   
   
   return(
@@ -42,10 +43,10 @@ const Header =({handlePageChange, setCurrentPage})=>{
         KRyun Portfolio
       </div>
       <div className="menu">
-        <button>Home</button>
-        <button>Skill Set</button>
-        <button>Projects</button>
-        <button>Contact</button>
+        <button onClick={()=>{handleBeforePageChange(0)}}>Home</button>
+        <button onClick={()=>{handleBeforePageChange(1)}}>Skill Set</button>
+        <button onClick={()=>{handleBeforePageChange(2)}}>Projects</button>
+        <button onClick={()=>{handleBeforePageChange(3)}}>Contact</button>
       </div>
     </HeaderBlock>
   )
