@@ -71,7 +71,7 @@ const App = ()=>{
 
   return(
     <>
-    <Header handleBeforePageChange={handleBeforePageChange}/>
+    {currentPage===0?<Header handleBeforePageChange={handleBeforePageChange}/>: null}
     <Responsive>
       <ReactPageScroller
         pageOnChange={handlePageChange}
