@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import { GoThreeBars } from "react-icons/go";
 // import { ImCross } from "react-icons/im";
