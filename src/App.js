@@ -7,6 +7,7 @@ import SkillSet from './components/SkillSet';
 import ReactPageScroller from 'react-page-scroller';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import HeaderClickable from './components/HeaderClickable';
 
 const App = ()=>{
 
@@ -71,7 +72,7 @@ const App = ()=>{
 
   return(
     <>
-    {currentPage===0?<Header handleBeforePageChange={handleBeforePageChange}/>: null}
+    {currentPage===0?<Header handleBeforePageChange={handleBeforePageChange}/>: <HeaderClickable handleBeforePageChange={handleBeforePageChange}/>}
     <Responsive>
       <ReactPageScroller
         pageOnChange={handlePageChange}

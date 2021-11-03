@@ -49,11 +49,11 @@ const HeaderBlock = styled.div`
 
   .scrollableMenu {
     position: absolute;
-    top: 9.5vh;
+    top: 9vh;
     left: 0;
     background-color: white;
     opacity: 0.95;
-    width: 100%;
+    width: 0%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -110,7 +110,7 @@ const Header =({handleBeforePageChange})=>{
   return(
     <HeaderBlock>
       <div className="title">
-        KRyun
+        <button onClick={()=>{handleBeforePageChange(0)}}>KRyun</button>
       </div>
       {
         isDesktop ?
