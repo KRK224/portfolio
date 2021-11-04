@@ -9,10 +9,11 @@ const ContactBlock = styled.div`
   height: 100vh;
   width: 100%;
   margin: 0 auto;
+  word-break: keep-all;
 
   .header {
     margin: 3rem 1rem 2rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
     .contactTitle {
       padding-left: 2rem;
@@ -53,6 +54,37 @@ const ContactBlock = styled.div`
         &:hover {
           opacity: 0.9;
           cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px){
+    padding: 2rem 2rem;
+    .contactContents {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1rem;
+      font-size: 1.3rem;
+      div:first-child {
+        word-break: keep-all;
+      }
+      div + div {
+        margin-left: 1.5rem;
+        ul {
+          list-style: none;
+          li+li {
+            margin-top: 1.5rem;
+          }
+          span {
+            margin-left: 1.2rem;
+          }
+        }
+      }
+      .resume {
+        text-align: center;
+        button {
+          font-size: 1.2rem;
         }
       }
     }

@@ -4,19 +4,19 @@ import {FaGithub} from 'react-icons/fa';
 
 
 const ProjectBlock = styled.div`
-  width: 300px;
-  box-shadow: 10px 5px 5px rgb(0, 0, 0, 30%);
+  width: 320px;
+  box-shadow: 10px 5px 5px rgb(0, 0, 0, 30%), -3px 5px 5px rgb(0, 0, 0, 30%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   padding: 1rem 0;
-  margin: 2rem 0;
+  margin: 1rem 1rem;
 
   .imgContainer {
     width: 80%;
     img {
-      width: 100%;
+      width: 90%;
       height: 245px;
     }
   }

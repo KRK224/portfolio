@@ -10,7 +10,7 @@ const HeaderClickableBlock = styled.div`
     top: 0;
     /* left: 0; */
     right: 0;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,6 +18,10 @@ const HeaderClickableBlock = styled.div`
     font-weight: bold;
     font-style: italic;
     z-index: 3;
+
+    @media (max-width: 1024px){
+      padding: 1rem 2rem;
+    }
 
     .title, .menu {
       display: none;
@@ -70,6 +74,46 @@ const HeaderClickableBlock = styled.div`
   .active {
     left: 0;
   }
+
+
+
+  .scrollableMenu {
+    position: absolute;
+    top: 9vh;
+    left: 0;
+    background-color: #efefef;
+    opacity: 0.95;
+    width: 0%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: appear;
+    animation-duration: 0.5s;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+
+    @keyframes appear {
+      0% {
+        width: 0%;
+        opacity: 0;
+      }
+      100% {
+        width: 100%;
+        opacity: 0.9;
+      }
+    }
+
+    button:hover {
+      font-weight: 1000;
+      color: #004ecb;
+    }
+    button + button {
+      margin-top: 2rem;
+    }
+  }
 `;
 
 const HeaderClickable = ({handleBeforePageChange}) =>{
@@ -78,16 +122,16 @@ const HeaderClickable = ({handleBeforePageChange}) =>{
 
   const isDesktop = useMediaQuery({
     query: '(min-width: 1024px)'
-  })
+  });
 
   return (
     <HeaderClickableBlock>
-      <div className={isClicked?"headerContainer active":"headerContainer"}>
-        <div className={isClicked ?"title active": "title"}>
+      <div className={isClicked? "headerContainer active" : "headerContainer"}>
+        <div className={isClicked ? "title active": "title"}>
           <button onClick={()=>{handleBeforePageChange(0)}}>KRyun</button>
         </div>
         <div className="toolBar">
-          <div className={isClicked? "menu active": "menu"}>
+          <div className={isDesktop? (isClicked? "menu active": "menu"): "menu"}>
             <button onClick={()=>{handleBeforePageChange(0)}}>Home</button>
             <button onClick={()=>{handleBeforePageChange(1)}}>Skill Set</button>
             <button onClick={()=>{handleBeforePageChange(2)}}>Projects</button>
@@ -100,6 +144,17 @@ const HeaderClickable = ({handleBeforePageChange}) =>{
             }
           </div>
         </div>
+        {
+          isDesktop ? null:
+          (isClicked ?
+            <div className="scrollableMenu">
+              <button onClick={()=>{handleBeforePageChange(0)}}>Home</button>
+              <button onClick={()=>{handleBeforePageChange(1)}}>Skill Set</button>
+              <button onClick={()=>{handleBeforePageChange(2)}}>Projects</button>
+              <button onClick={()=>{handleBeforePageChange(3)}}>Contact</button>
+            </div> :
+          null)
+        }
       </div>
     </HeaderClickableBlock>
   )

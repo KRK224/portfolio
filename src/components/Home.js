@@ -11,6 +11,10 @@ const HomeBlock = styled.div`
   height: 100vh;
   color: white;
   font-size: 3rem;
+
+  @media (max-width: 768px){
+    font-size: 2rem;
+  }
 `;
 
 
@@ -20,13 +24,14 @@ const Home = ()=>{
       <Typewriter 
         options={{
           loop: true,
+
         }}
         onInit={(typewriter)=>{
           typewriter
-          .typeString("<strong>안녕하세요!</strong>")
+          .typeString("<strong>안녕하세요!!</strong>")
           .pauseFor(2000)
           .deleteAll()
-          .typeString("<strong>KRyun 포트폴리오에</strong><br /><strong>오신걸 환영합니다!!</strong>")
+          .typeString("<strong>꾸준한 프론트엔드 개발자,</strong><br /><strong>김경륜 입니다!</strong>")
           .pauseFor(2000)
           .start();
         }}

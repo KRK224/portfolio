@@ -4,16 +4,17 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import Project from './Project';
+import {useMediaQuery} from 'react-responsive';
 
 const ProjectBlock = styled.div`
-  padding: 2rem 8rem;
+  padding: 2rem 6rem;
   height: 100vh;
   width: 100%;
   margin: 0 auto;
 
   .header {
     margin: 3rem 1rem 2rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
     .projectsTitle {
       padding-left: 2rem;
@@ -26,16 +27,29 @@ const ProjectBlock = styled.div`
     margin: 0 auto;
     margin-left: 2rem;
   }
+
+  @media (max-width: 1024px){
+    padding: 2rem 2rem;
+  }
 `;
 
 const Projects = () =>{
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1300px)'
+  });
+
+  const isTablet = useMediaQuery({
+    query: '(min-width:768px)'
+  })
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: isDesktop?3:(isTablet?2:1),
+    slidesToScroll: isDesktop?2:1,
     className: "sliderDiv",
+    arrows: false,
   };
 
   const projectData = {
@@ -68,11 +82,11 @@ const Projects = () =>{
           tags={projectData.tags[1]}
         />
         <Project 
-          imgPath={projectData.imgPath[0]} 
-          title={projectData.title[0]}
-          details={projectData.details[0]}
-          url={projectData.url[0]}
-          tags={projectData.tags[0]}
+          imgPath={projectData.imgPath[1]} 
+          title={projectData.title[1]}
+          details={projectData.details[1]}
+          url={projectData.url[1]}
+          tags={projectData.tags[1]}
         />
         <Project 
           imgPath={projectData.imgPath[0]} 

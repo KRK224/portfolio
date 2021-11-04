@@ -12,14 +12,14 @@ const HeaderBlock = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  padding: 1rem 5rem;
+  padding: 1rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.8rem;
   font-weight: bold;
   font-style: italic;
-  z-index: 3;
+  z-index: 2;
 
   .threeBars {
     button {
@@ -29,10 +29,6 @@ const HeaderBlock = styled.div`
   }
   
   button {
-    appearance: none;
-    border: none;
-    outline: none;
-    background-color: transparent;
     font-size: 1.8rem;
     font-weight: bold;
     font-style: italic;

@@ -1,18 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SkillBar from './SkillBar';
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import {useMediaQuery} from 'react-responsive';
 
 
 const SkillSetBlock = styled.div`
-  padding: 2rem 8rem;
+  padding: 2rem 6rem;
   height: 100vh;
   width: 100%;
   margin: 0 auto;
 
+  @media (max-width: 1024px){
+    padding: 2rem 2rem;
+  }
+
   .header {
-    margin: 3rem 1rem 8rem;
-    font-size: 2rem;
+    margin: 3rem 1rem 6rem;
+    font-size: 1.8rem;
     font-weight: 600;
     display: flex;
     justify-content: space-between;
@@ -61,7 +66,6 @@ const SkillSetBlock = styled.div`
         border-right-width: 0px;
         border-top-color: #757575;
       }
-
     }
   }
 
@@ -126,7 +130,48 @@ const SkillSetBlock = styled.div`
 
   }
 
-  .container {
+  
+  .buttonContainer {
+    padding: 0 2rem;
+    button {
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-style: italic;
+      cursor: pointer;
+      outline: 0;
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.5;
+      text-align: center;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 6px 12px;
+      font-size: 1rem;
+      border-radius: .25rem;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      color: black;
+      border: 2px solid #6766ee;
+      :hover {
+          color: #fff;
+          background-color: #6766ee;
+          border-color: #6766ee;
+      }
+    }
+    button + button {
+        margin-left: 2rem;
+        @media (max-width: 550px){
+          margin-left: 1rem;
+        }
+    }
+
+    .clickedButton {
+      color: #fff;
+      background-color: #6766ee;
+      border-color: #6766ee;
+    }
+  }
+
+  .skillSetContainer {
     display: flex;
     justify-content: space-between;
 
@@ -154,11 +199,20 @@ const SkillSetBlock = styled.div`
         padding-bottom: 2rem;
       }
     }
-  };
+  }
+  .deActive {
+    display: none;
+  }
 `;
 
 
 const SkillSet = ({active})=>{
+  
+  const [isClicked, setIsClicked] = useState([true, false, false]);
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1024px)'
+  });
+
 
   useEffect(()=>{
   },
@@ -191,20 +245,25 @@ const SkillSet = ({active})=>{
         </div>
       </span>
     </div>
-    <div className="container">
-      <div className="frontEnd">
-        <span>#Front End</span>
+    <div className={isDesktop? "buttonContainer deActive": "buttonContainer"}>
+      <button onClick={()=>{setIsClicked([true, false, false])}} className={isClicked[0]?"clickedButton":null}>#Front End</button>
+      <button onClick={()=>{setIsClicked([false, false, true])}} className={isClicked[2]?"clickedButton":null}>#Language</button>
+      <button onClick={()=>{setIsClicked([false, true, false])}} className={isClicked[1]?"clickedButton":null}>#Back End</button>
+    </div>
+    <div className="skillSetContainer">
+      <div className={isDesktop?"frontEnd":(isClicked[0]?"frontEnd":"frontEnd deActive")}>
+        {isDesktop?<span>#Front End</span>:null}
         <SkillBar skillName="HTML/CSS" percent="75%" active={active}/>
         <SkillBar skillName="React/Redux" percent="50%" active={active}/>
         <SkillBar skillName="Redux-Saga" percent="25%" active={active}/>
       </div>
-      <div className="backEnd">
-        <span>#Back End</span>
+      <div className={isDesktop?"backEnd":(isClicked[1]?"backEnd":"backEnd deActive")}>
+        {isDesktop?<span>#Back End</span>:null}
         <SkillBar skillName="Node.js/Koa" percent="25%" active={active}/>
         <SkillBar skillName="MongoDB" percent="25%" active={active}/>
       </div>
-      <div className="language">
-        <span>#Language</span> 
+      <div className={isDesktop?"language": (isClicked[2]?"language":"language deActive")}>
+        {isDesktop?<span>#Language</span>:null} 
         <SkillBar skillName="JavaScript" percent="75%" active={active}/>
         <SkillBar skillName="Python" percent="50%" active={active}/>
       </div>
