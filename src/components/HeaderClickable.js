@@ -53,10 +53,6 @@ const HeaderClickableBlock = styled.div`
     }
     
     button {
-      appearance: none;
-      border: none;
-      outline: none;
-      background-color: transparent;
       font-size: 1.8rem;
       font-weight: bold;
       font-style: italic;
