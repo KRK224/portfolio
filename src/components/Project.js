@@ -6,12 +6,7 @@ import {FaGithub} from 'react-icons/fa';
 const ProjectBlock = styled.div`
   
   /* width: 330px; */
-  ${
-    props => props.width &&
-    css`
-      margin: 1rem 1rem;
-    `
-  }
+
   box-shadow: 10px 5px 5px rgb(0, 0, 0, 30%), -3px 5px 5px rgb(0, 0, 0, 30%);
   display: flex;
   flex-direction: column;
@@ -20,12 +15,21 @@ const ProjectBlock = styled.div`
   padding: 1rem 0;
   margin: 1rem 3rem;
 
+  @media (max-width: 768px){
+    margin: 1rem 2rem;
+  }
+
   .imgContainer {
     width: 80%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     img {
-      width: 100%;
+      width: 90%;
       height: 245px;
+      @media (max-width: 768px){
+        height: 200px;
+        width: 100%;
+      }
     }
   }
   
@@ -33,6 +37,10 @@ const ProjectBlock = styled.div`
     margin: 1.4rem 0;
     font-weight: bold;
     font-size: 1.2rem;
+    @media (max-width: 768px){
+      margin: 1rem 0;
+      font-size: 1rem;
+    }
   }
   
   .projectContents {
@@ -53,6 +61,19 @@ const ProjectBlock = styled.div`
         }
       }
     }
+
+    @media (max-width: 768px){
+      & .personnel {
+        font-size: 0.7rem;
+      }
+      & .details {
+        font-size: 0.8rem;
+      }
+
+      & .gitUrl a{
+        font-size: 1.2rem;
+      }
+    }
   }
 
   .tags {
@@ -61,11 +82,14 @@ const ProjectBlock = styled.div`
     span + span {
       margin-left: 0.4rem;
     }
+    @media (max-width:768px){
+      font-size: 0.6rem;
+    }
   }
 
 `;
 
-const Project = ({imgPath, title, details, url, tags, width})=>{
+const Project = ({imgPath, title, details, url, tags})=>{
   const tagsList = tags.map((tag, index) =><span key={index}>#{tag}</span>);
   
   return(

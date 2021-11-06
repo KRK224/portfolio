@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import Project from './Project';
 import {useMediaQuery} from 'react-responsive';
+import {MdArrowLeft, MdArrowRight} from "react-icons/md";
 
 const ProjectBlock = styled.div`
   padding: 2rem 8rem;
@@ -30,15 +31,36 @@ const ProjectBlock = styled.div`
     margin: 1rem 0;
     margin-left: 2rem;
   }
+  .slick-prev {
+    color: black;
+    left: 3% !important;
+    z-index: 1;
+  }
+  .slick-next {
+    color: black;
+    right: 3% !important;
+  }
 
   @media (max-width: 1024px){
-    padding: 2rem 2rem;
+    padding: 2rem;
+  }
+  @media (max-width: 768px){
+    padding: 1rem;
+    .header {
+      margin: 1rem;
+      & .projectsTitle {
+        font-size: 1.2rem;
+      }
+    }
+    .projectsContents{
+      margin-left: 1rem;
+    }
   }
 `;
 
 const Projects = () =>{
   const isDesktop = useMediaQuery({
-    query: '(min-width: 1024px)'
+    query: '(min-width: 1300px)'
   });
 
   const isTablet = useMediaQuery({
@@ -46,17 +68,20 @@ const Projects = () =>{
   })
 
   const isMobile = useMediaQuery({
-    query: '(max-width: 768px)'
+    query: '(max-width:768px)'
   })
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: isDesktop?3:(isTablet?2:1),
+    slidesToShow: isDesktop? 3:(isTablet?2:1),
     slidesToScroll: isDesktop?2:1,
     className: "sliderDiv",
-    arrows: false,
+    adaptiveHeight: true,
+    nextArrow: <MdArrowRight />,
+    prevArrow: <MdArrowLeft />,
+    swipeToSlide: isMobile? false: true,
   };
 
   const projectData = {
@@ -80,7 +105,6 @@ const Projects = () =>{
           details={projectData.details[0]}
           url={projectData.url[0]}
           tags={projectData.tags[0]}
-          width= {false}
         />
         <Project 
           imgPath={projectData.imgPath[1]} 
@@ -88,7 +112,6 @@ const Projects = () =>{
           details={projectData.details[1]}
           url={projectData.url[1]}
           tags={projectData.tags[1]}
-          width={false}
         />
         <Project 
           imgPath={projectData.imgPath[2]} 
@@ -96,7 +119,6 @@ const Projects = () =>{
           details={projectData.details[2]}
           url={projectData.url[2]}
           tags={projectData.tags[2]}
-          width={false}
         />
         <Project 
           imgPath={projectData.imgPath[0]} 
@@ -104,7 +126,6 @@ const Projects = () =>{
           details={projectData.details[3]}
           url={projectData.url[3]}
           tags={projectData.tags[3]}
-          width={false}
         />
       </Slider>
     </div>
