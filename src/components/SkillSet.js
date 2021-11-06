@@ -272,8 +272,8 @@ const SkillSet = ({active})=>{
     </div>
     <div className={isDesktop? "buttonContainer inActive": "buttonContainer"}>
       <button onClick={()=>{setIsClicked([true, false, false])}} className={isClicked[0]?"clickedButton":null}>#Front End</button>
-      <button onClick={()=>{setIsClicked([false, false, true])}} className={isClicked[2]?"clickedButton":null}>#Language</button>
       <button onClick={()=>{setIsClicked([false, true, false])}} className={isClicked[1]?"clickedButton":null}>#Back End</button>
+      <button onClick={()=>{setIsClicked([false, false, true])}} className={isClicked[2]?"clickedButton":null}>#Language</button>
     </div>
     <div className="skillSetContainer">
       <div className={isDesktop?"frontEnd":(isClicked[0]?"frontEnd":"frontEnd inActive")}>
