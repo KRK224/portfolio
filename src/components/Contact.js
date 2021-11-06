@@ -5,11 +5,14 @@ import { FaGithubSquare, FaPhoneAlt } from "react-icons/fa";
 
 
 const ContactBlock = styled.div`
-  padding: 2rem 10rem;
+  padding: 2rem 8rem;
   height: 100vh;
   width: 100%;
   margin: 0 auto;
   word-break: keep-all;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   .header {
     margin: 3rem 1rem 2rem;

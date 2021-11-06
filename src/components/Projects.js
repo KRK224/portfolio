@@ -7,10 +7,13 @@ import Project from './Project';
 import {useMediaQuery} from 'react-responsive';
 
 const ProjectBlock = styled.div`
-  padding: 2rem 6rem;
+  padding: 2rem 8rem;
   height: 100vh;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   .header {
     margin: 3rem 1rem 2rem;
@@ -24,7 +27,7 @@ const ProjectBlock = styled.div`
 
   .projectsContents {
     width: 100%;
-    margin: 0 auto;
+    margin: 1rem 0;
     margin-left: 2rem;
   }
 

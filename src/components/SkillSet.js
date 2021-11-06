@@ -6,10 +6,13 @@ import {useMediaQuery} from 'react-responsive';
 
 
 const SkillSetBlock = styled.div`
-  padding: 2rem 6rem;
+  padding: 2rem 8rem;
   height: 100vh;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   @media (max-width: 1024px){
     padding: 2rem 2rem;
