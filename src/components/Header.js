@@ -21,7 +21,9 @@ const HeaderBlock = styled.div`
   @media (max-width: 1024px){
     padding: 1rem 2rem;
   }
+
   @media (max-width: 768px){
+    padding: 1rem;
     .threeBars button {
       font-size: 1.2rem;
     }

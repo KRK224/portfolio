@@ -1,24 +1,32 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import PropTypes from 'prop-types';
 
 
 const SkillBarBlock = styled.div`
+
   .info {
     padding-bottom: 1.5rem;
     
+    & .skillName {
+      font-size: 1.3rem;
+      font-weight: 500;
+      opacity: 0;
+      animation: showText 0.5s 1s linear forwards;
+    }
     .inactive {
       animation: none;
     }
-  }
 
-  .info .skillName {
-    font-size: 1.3rem;
-    font-weight: 500;
-    opacity: 0;
-    animation: showText 0.5s 1s linear forwards;
+    ${props => 
+      props.isMobile && css`
+      padding-bottom: 1.3rem;
+      
+      & .skillName {
+        font-size: 1rem;
+      }
+    `};
   }
-
 
   @keyframes showText {
     100%{
@@ -100,11 +108,10 @@ const SkillBarBlock = styled.div`
     100%{
       opacity: 1;
     }
-
   }
 `;
 
-const SkillBar = ({skillName, percent, active})=>{
+const SkillBar = ({skillName, percent, active, isMobile})=>{
   useEffect(()=>{
   },
   [active]);

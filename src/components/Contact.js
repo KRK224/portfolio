@@ -63,11 +63,11 @@ const ContactBlock = styled.div`
   }
 
   @media (max-width: 1024px){
-    padding: 2rem 2rem;
+    padding: 2rem;
   }
 
   @media (max-width: 768px){
-    padding: 2rem 1rem;
+    padding: 1rem;
     .header .contactTitle {
       font-size: 1.2rem;
     }

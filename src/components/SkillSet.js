@@ -15,7 +15,17 @@ const SkillSetBlock = styled.div`
   justify-content: space-evenly;
 
   @media (max-width: 1024px){
-    padding: 2rem 2rem;
+    padding: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    
+    .header {
+      .skillSetTitle{
+        font-size: 1.2rem;
+      }
+    }
   }
 
   .header {
@@ -137,7 +147,6 @@ const SkillSetBlock = styled.div`
   .buttonContainer {
     padding: 0 2rem;
     button {
-      font-size: 1.5rem;
       font-weight: bold;
       font-style: italic;
       cursor: pointer;
@@ -162,15 +171,25 @@ const SkillSetBlock = styled.div`
     }
     button + button {
         margin-left: 2rem;
-        @media (max-width: 550px){
-          margin-left: 1rem;
-        }
     }
 
     .clickedButton {
       color: #fff;
       background-color: #6766ee;
       border-color: #6766ee;
+    }
+
+    @media (max-width: 768px){
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      button {
+        font-size: 0.8rem;
+      }
+      button + button {
+        margin-top: 0.8rem;
+        margin-left: 0;
+      }
     }
   }
 
@@ -203,7 +222,7 @@ const SkillSetBlock = styled.div`
       }
     }
   }
-  .deActive {
+  .inActive {
     display: none;
   }
 `;
@@ -215,6 +234,9 @@ const SkillSet = ({active})=>{
   const isDesktop = useMediaQuery({
     query: '(min-width: 1024px)'
   });
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)'
+  })
 
 
   useEffect(()=>{
@@ -225,7 +247,7 @@ const SkillSet = ({active})=>{
   <SkillSetBlock>
     <div className="header">
       <span className="skillSetTitle">Skill Set</span>
-      <span className="skillBarInfo">
+      <span className={isMobile?"skillBarInfo inActive": "skillBarInfo"}>
         <div className="skillBarInfoDetail">
           <div>입문: 사용해본 경험이 있다.</div>
           <div>초급: 디버깅할 때 에러 원인을 파악하는데 시간이 걸린다.</div>
@@ -248,24 +270,24 @@ const SkillSet = ({active})=>{
         </div>
       </span>
     </div>
-    <div className={isDesktop? "buttonContainer deActive": "buttonContainer"}>
+    <div className={isDesktop? "buttonContainer inActive": "buttonContainer"}>
       <button onClick={()=>{setIsClicked([true, false, false])}} className={isClicked[0]?"clickedButton":null}>#Front End</button>
       <button onClick={()=>{setIsClicked([false, false, true])}} className={isClicked[2]?"clickedButton":null}>#Language</button>
       <button onClick={()=>{setIsClicked([false, true, false])}} className={isClicked[1]?"clickedButton":null}>#Back End</button>
     </div>
     <div className="skillSetContainer">
-      <div className={isDesktop?"frontEnd":(isClicked[0]?"frontEnd":"frontEnd deActive")}>
+      <div className={isDesktop?"frontEnd":(isClicked[0]?"frontEnd":"frontEnd inActive")}>
         {isDesktop?<span>#Front End</span>:null}
-        <SkillBar skillName="HTML/CSS" percent="75%" active={active}/>
-        <SkillBar skillName="React/Redux" percent="50%" active={active}/>
-        <SkillBar skillName="Redux-Saga" percent="25%" active={active}/>
+        <SkillBar skillName="HTML/CSS" percent="75%" active={active} isMobile={isMobile} />
+        <SkillBar skillName="React/Redux" percent="50%" active={active} isMobile={isMobile} />
+        <SkillBar skillName="Redux-Saga" percent="25%" active={active} isMobile={isMobile} />
       </div>
-      <div className={isDesktop?"backEnd":(isClicked[1]?"backEnd":"backEnd deActive")}>
+      <div className={isDesktop?"backEnd":(isClicked[1]?"backEnd":"backEnd inActive")}>
         {isDesktop?<span>#Back End</span>:null}
         <SkillBar skillName="Node.js/Koa" percent="25%" active={active}/>
         <SkillBar skillName="MongoDB" percent="25%" active={active}/>
       </div>
-      <div className={isDesktop?"language": (isClicked[2]?"language":"language deActive")}>
+      <div className={isDesktop?"language": (isClicked[2]?"language":"language inActive")}>
         {isDesktop?<span>#Language</span>:null} 
         <SkillBar skillName="JavaScript" percent="75%" active={active}/>
         <SkillBar skillName="Python" percent="50%" active={active}/>

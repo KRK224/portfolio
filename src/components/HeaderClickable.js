@@ -23,7 +23,7 @@ const HeaderClickableBlock = styled.div`
       padding: 1rem 2rem;
     }
     @media (max-width: 768px){
-
+      padding: 1rem;
       .title button {
         font-size: 1.2rem;
       }
