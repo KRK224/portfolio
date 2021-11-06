@@ -15,8 +15,9 @@ const ProjectBlock = styled.div`
 
   .imgContainer {
     width: 80%;
+    text-align: center;
     img {
-      width: 90%;
+      width: 100%;
       height: 245px;
     }
   }

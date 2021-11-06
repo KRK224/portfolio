@@ -45,7 +45,7 @@ const HeaderBlock = styled.div`
 
   .scrollableMenu {
     position: absolute;
-    top: 9vh;
+    top: 10vh;
     left: 0;
     background-color: white;
     opacity: 0.95;
