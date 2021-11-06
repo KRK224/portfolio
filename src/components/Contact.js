@@ -64,30 +64,38 @@ const ContactBlock = styled.div`
 
   @media (max-width: 1024px){
     padding: 2rem 2rem;
+  }
+
+  @media (max-width: 768px){
+    padding: 2rem 1rem;
+    .header .contactTitle {
+      font-size: 1.2rem;
+    }
+
     .contactContents {
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1rem;
-      font-size: 1.3rem;
+      padding: 1rem 0.5rem;
+      font-size: 0.8rem;
       div:first-child {
         word-break: keep-all;
+        font-size: 1rem;
       }
       div + div {
-        margin-left: 1.5rem;
+        /* margin-left: 1rem; */
         ul {
+          padding-left: 0.8rem;
           list-style: none;
           li+li {
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
           }
           span {
-            margin-left: 1.2rem;
+            margin-left: 0.8rem;
           }
         }
       }
       .resume {
         text-align: center;
         button {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
       }
     }

@@ -22,6 +22,22 @@ const HeaderClickableBlock = styled.div`
     @media (max-width: 1024px){
       padding: 1rem 2rem;
     }
+    @media (max-width: 768px){
+
+      .title button {
+        font-size: 1.2rem;
+      }
+
+      .scrollableMenu button {
+        font-size: 1.2rem;
+      }
+
+      .threeBars button{
+        font-size: 1.2rem;
+      }
+
+
+    }
 
     .title, .menu {
       display: none;
@@ -46,9 +62,11 @@ const HeaderClickableBlock = styled.div`
     .threeBars {
       margin-left: 1rem;
       button {
+        position: relative;
         display: flex;
         align-items: center;
         background-color: none;
+        z-index: 5;
       }
     }
     
@@ -75,7 +93,7 @@ const HeaderClickableBlock = styled.div`
 
   .scrollableMenu {
     position: absolute;
-    top: 9vh;
+    top: 0;
     left: 0;
     background-color: #efefef;
     opacity: 0.95;

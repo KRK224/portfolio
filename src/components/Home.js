@@ -13,7 +13,7 @@ const HomeBlock = styled.div`
   font-size: 3rem;
 
   @media (max-width: 768px){
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 `;
 

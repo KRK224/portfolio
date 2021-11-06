@@ -1,17 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {FaGithub} from 'react-icons/fa';
 
 
 const ProjectBlock = styled.div`
-  width: 320px;
+  
+  /* width: 330px; */
+  ${
+    props => props.width &&
+    css`
+      margin: 1rem 1rem;
+    `
+  }
   box-shadow: 10px 5px 5px rgb(0, 0, 0, 30%), -3px 5px 5px rgb(0, 0, 0, 30%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   padding: 1rem 0;
-  margin: 1rem 1rem;
+  margin: 1rem 3rem;
 
   .imgContainer {
     width: 80%;
@@ -58,7 +65,7 @@ const ProjectBlock = styled.div`
 
 `;
 
-const Project = ({imgPath, title, details, url, tags})=>{
+const Project = ({imgPath, title, details, url, tags, width})=>{
   const tagsList = tags.map((tag, index) =><span key={index}>#{tag}</span>);
   
   return(

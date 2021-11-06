@@ -38,11 +38,15 @@ const ProjectBlock = styled.div`
 
 const Projects = () =>{
   const isDesktop = useMediaQuery({
-    query: '(min-width: 1300px)'
+    query: '(min-width: 1024px)'
   });
 
   const isTablet = useMediaQuery({
     query: '(min-width:768px)'
+  })
+
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)'
   })
 
   const settings = {
@@ -76,6 +80,7 @@ const Projects = () =>{
           details={projectData.details[0]}
           url={projectData.url[0]}
           tags={projectData.tags[0]}
+          width= {false}
         />
         <Project 
           imgPath={projectData.imgPath[1]} 
@@ -83,6 +88,7 @@ const Projects = () =>{
           details={projectData.details[1]}
           url={projectData.url[1]}
           tags={projectData.tags[1]}
+          width={false}
         />
         <Project 
           imgPath={projectData.imgPath[2]} 
@@ -90,6 +96,7 @@ const Projects = () =>{
           details={projectData.details[2]}
           url={projectData.url[2]}
           tags={projectData.tags[2]}
+          width={false}
         />
         <Project 
           imgPath={projectData.imgPath[0]} 
@@ -97,6 +104,7 @@ const Projects = () =>{
           details={projectData.details[3]}
           url={projectData.url[3]}
           tags={projectData.tags[3]}
+          width={false}
         />
       </Slider>
     </div>

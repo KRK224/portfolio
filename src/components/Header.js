@@ -16,15 +16,30 @@ const HeaderBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  font-style: italic;
-  z-index: 2;
+  z-index: 3;
+
+  @media (max-width: 1024px){
+    padding: 1rem 2rem;
+  }
+  @media (max-width: 768px){
+    .threeBars button {
+      font-size: 1.2rem;
+    }
+
+    .title button {
+      font-size: 1.2rem;
+    }
+    .scrollableMenu button {
+      font-size: 1.2rem;
+    }
+  }
 
   .threeBars {
     button {
+      position: relative;
       display: flex;
       align-items: center;
+      z-index: 5;
     }
   }
   
@@ -45,7 +60,7 @@ const HeaderBlock = styled.div`
 
   .scrollableMenu {
     position: absolute;
-    top: 10vh;
+    top: 0;
     left: 0;
     background-color: white;
     opacity: 0.95;
