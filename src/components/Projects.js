@@ -85,11 +85,11 @@ const Projects = () =>{
   };
 
   const projectData = {
-    imgPath: ['img/MBTI.gif', 'img/Portfolio.gif','img/YoutubeClone.gif'],
+    imgPath: ['img/MBTI.gif', 'img/Portfolio.gif','img/YoutubeClone.gif', 'img/Python-Credential.gif'],
     title: ['나와 잘 맞는 연예인은?', '개인 포트폴리오', 'Youtube Clone', 'Credential Info Creation'],
     details: ['Redux로 구현한 MBTI 테스트', 'React로 구현한 포트폴리오', '바닐라 js를 이용한 유튜브 클론', 'excel 파일을 데이터별로 여러 개 생성'],
     url: ['https://github.com/KRK224/MBTI', 'https://github.com/KRK224/portfolio', 'https://github.com/KRK224/Youtube-clone', 'https://github.com/KRK224/Python-Credential-Info-set'],
-    tags: [['react', 'react-hooks', 'redux', 'redux-persist'], ['react', 'react-slick', 'react-responsive'],['Html5', 'CSS3', 'Vanilla JS', '반응형'], ['Python', 'tkinter', 'tkinterDnd2']],
+    tags: [['react', 'react-hooks', 'redux', 'redux-persist'], ['react', 'react-slick', 'react-responsive'],['Html5', 'CSS3', 'Vanilla JS', '반응형'], ['Python', 'tkinter', 'tkinterDnd2','win32']],
   };
 
   return (
@@ -121,7 +121,7 @@ const Projects = () =>{
           tags={projectData.tags[2]}
         />
         <Project 
-          imgPath={projectData.imgPath[0]} 
+          imgPath={projectData.imgPath[3]} 
           title={projectData.title[3]}
           details={projectData.details[3]}
           url={projectData.url[3]}
