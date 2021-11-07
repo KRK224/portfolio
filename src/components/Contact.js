@@ -132,7 +132,7 @@ const Contact = () =>{
           </ul>
         </div>
         <div className="resume">
-          <a href="" target="_blank" rel="noopener noreferrer">
+          <a href="/img/김경륜_이력서.pdf" target="_blank" rel="noopener noreferrer">
             <button>이력서 보기</button>
           </a>
         </div>
